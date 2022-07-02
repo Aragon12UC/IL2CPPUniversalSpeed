@@ -42,7 +42,7 @@ void KeyHandlerLoop() {
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-	} while (!bExit);
+	} while (!bExit); // Only unload when exit is true
 }
 
 void Init()
@@ -69,15 +69,15 @@ void Init()
 
 DWORD WINAPI MainThread(LPVOID lpReserved)
 {
-	Console con = Console::instance(true);
-	con.setTitle("Universal IL2CPP Speed");
+	Console con = Console::instance(true); // Create the console and make it visible
+	con.setTitle("Universal IL2CPP Speed"); // Set the console title
 	std::cout << "Injected!" << std::endl;
 	
 	Init();
 
 	KeyHandlerLoop();
 
-	con.free();
+	con.free(); // Destroy the console so the console does not linger after the DLL as unloaded
 	FreeLibraryAndExitThread((HMODULE)lpReserved, EXIT_SUCCESS); // Unload DLL ~ Omega172
 	return 0;
 }
