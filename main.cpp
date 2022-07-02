@@ -26,17 +26,19 @@ void KeyHandlerLoop() {
 		 * I've included an enum for KeyCode inside main.hpp
 		 */ 
 		
-		if (GetAsyncKeyState(VK_F1) & 0x1) {
-			bSpeed = !bSpeed;
-
-			float timeScale = bSpeed ? speedMultiplier : 1.f; // Short hand if statements are cool ~ Omega172
-			SetTimeScale(timeScale);
-		}
-		
 		if (GetAsyncKeyState(VK_F3) & 0x1)
 		{
 			bSpeed = false;
 			bExit = true;
+		}
+
+		if (GetAsyncKeyState(VK_F1) & 0x1) {
+			bSpeed = !bSpeed;
+
+			std::cout << (bSpeed ? "Speed: On" : "Speed: Off") << std::endl;
+
+			float timeScale = bSpeed ? speedMultiplier : 1.f; // Short hand if statements are cool ~ Omega172
+			SetTimeScale(timeScale);
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
