@@ -4,14 +4,16 @@
 
 MethodInfo* setTime;
 
-void SetTimeScale(float f) {
+void SetTimeScale(float f)
+{
 	void* args[1] = { &f };
 
 	Il2CppException* exc;
 	il2cpp_runtime_invoke(setTime, nullptr, args, &exc);
 }
 
-void KeyHandlerLoop() {
+void KeyHandlerLoop()
+{
 	bool bExit = false, bSpeed = false;
 	const float speedMultiplier = 3.f;
 	
@@ -32,7 +34,8 @@ void KeyHandlerLoop() {
 			bExit = true;
 		}
 
-		if (GetAsyncKeyState(VK_F1) & 0x1) {
+		if (GetAsyncKeyState(VK_F1) & 0x1)
+		{
 			bSpeed = !bSpeed;
 
 			std::cout << (bSpeed ? "Speed: On" : "Speed: Off") << std::endl;
@@ -53,7 +56,8 @@ void Init()
 
 	Il2CppDomain* domain = il2cpp_domain_get();
 
-	if (!domain) {
+	if (!domain)
+	{
 		std::cout << "domain = null\n" << std::endl;
 		return;
 	}
