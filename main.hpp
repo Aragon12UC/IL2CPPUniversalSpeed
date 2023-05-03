@@ -4,10 +4,10 @@
 #include <thread>
 #include <iostream>
 
-using namespace std;
+// using namespace std; // Don't use this, it's not good practice namespace poisoning is a thing ~ Omega172
 
-void init();
-void main();
+void Init(); // Don't know why it was declared but now it has a definition ~ Omega172
+DWORD WINAPI MainThread(LPVOID lpReserved);
 
 // KeyCode, only useful if you plan on using Unity's built in input handling.
 /*enum class KeyCode
